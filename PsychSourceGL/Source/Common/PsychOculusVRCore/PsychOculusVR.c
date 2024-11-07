@@ -67,7 +67,7 @@ static unsigned int devicecount = 0;
 static int verbosity = 3;
 static psych_bool initialized = FALSE;
 
-void InitializeSynopsis(void)
+const char** InitializeSynopsis(void)
 {
     int i = 0;
     const char **synopsis = synopsisSYNOPSIS;
@@ -109,6 +109,7 @@ void InitializeSynopsis(void)
     if (i > MAX_SYNOPSIS_STRINGS) {
         PrintfExit("%s: Increase dimension of synopsis[] from %ld to at least %ld and recompile.", __FILE__, (long) MAX_SYNOPSIS_STRINGS, (long) i);
     }
+	return synopsis;  // Return the synopsis array
 }
 
 PsychError PsychOculusVRDisplaySynopsis(void)

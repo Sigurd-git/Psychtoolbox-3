@@ -30,7 +30,7 @@
 
 //function prototypes
 PsychError MODULEVersion(void);			//MODULEVersion.c
-void InitializeSynopsis(void);
+const char** InitializeSynopsis(void);
 PsychError PsychKinectDisplaySynopsis(void);
 
 void PsychKNInit(void);

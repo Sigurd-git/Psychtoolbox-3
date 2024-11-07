@@ -50,7 +50,7 @@ extern "C" {
 // function prototypes
 PsychError MODULEVersion(void);
 
-void InitializeSynopsis(void);
+const char** InitializeSynopsis(void);
 PsychError PsychVulkanDisplaySynopsis(void);
 
 void PsychVulkanInit(void);

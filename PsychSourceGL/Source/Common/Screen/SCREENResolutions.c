@@ -292,24 +292,24 @@ PsychError SCREENConfigureDisplay(void)
             if (nbrightness < 0.0) nbrightness = 0.0;
             if (nbrightness > 1.0) nbrightness = 1.0;
 
-            // Set it: Prefer SPI (System private interface) for this, as it isn't as fucked up as Apple's public implementation:
-            if (CoreDisplay_Display_SetUserBrightness != NULL) {
-                // Can brightness be changed on this system?
-                if ((DisplayServicesCanChangeBrightness != NULL) && !DisplayServicesCanChangeBrightness(displayID))
-                    PsychErrorExitMsg(PsychError_user, "Failed to set new display brightness via SPI. Unsupported on this system?");
+            // // Set it: Prefer SPI (System private interface) for this, as it isn't as fucked up as Apple's public implementation:
+            // if (CoreDisplay_Display_SetUserBrightness != NULL) {
+            //     // Can brightness be changed on this system?
+            //     if ((DisplayServicesCanChangeBrightness != NULL) && !DisplayServicesCanChangeBrightness(displayID))
+            //         PsychErrorExitMsg(PsychError_user, "Failed to set new display brightness via SPI. Unsupported on this system?");
 
-                // Set it:
-                CoreDisplay_Display_SetUserBrightness(displayID, nbrightness);
+            //     // Set it:
+            //     CoreDisplay_Display_SetUserBrightness(displayID, nbrightness);
 
-                // Notify UI:
-                if (DisplayServicesBrightnessChanged != NULL)
-                    DisplayServicesBrightnessChanged(displayID, nbrightness);
-            }
-            else {
-                err = IODisplaySetFloatParameter(service, kNilOptions, CFSTR(kIODisplayBrightnessKey), (float) nbrightness);
-                if (err != kIOReturnSuccess)
-                    PsychErrorExitMsg(PsychError_user, "Failed to set new display brightness. Unsupported on this system?");
-            }
+                // // Notify UI:
+                // if (DisplayServicesBrightnessChanged != NULL)
+                //     DisplayServicesBrightnessChanged(displayID, nbrightness);
+            // }
+            // else {
+            err = IODisplaySetFloatParameter(service, kNilOptions, CFSTR(kIODisplayBrightnessKey), (float) nbrightness);
+            if (err != kIOReturnSuccess)
+                PsychErrorExitMsg(PsychError_user, "Failed to set new display brightness. Unsupported on this system?");
+            // }
         }
         #endif
 

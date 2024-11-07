@@ -114,10 +114,10 @@ unsigned int  devicecount = 0;
 unsigned int  verbosity = 3;
 psych_bool initialized = FALSE;
 
-void InitializeSynopsis(void)
+const char** InitializeSynopsis(void)
 {
 	int i=0;
-	const char **synopsis = synopsisSYNOPSIS;  //abbreviate the long name
+	const char **synopsis = synopsisSYNOPSIS;  // Abbreviate the long name
 	
 	synopsis[i++] = "PsychKinectCore - A Psychtoolbox driver for the Microsoft Kinect.\n";
 	synopsis[i++] = "This driver allows to control the box and grab color images and depth";
@@ -147,11 +147,12 @@ void InitializeSynopsis(void)
 	synopsis[i++] = "PsychKinect('ReleaseFrame', kinectPtr);";
 	synopsis[i++] = "[imageOrPtr, width, height, channels, extType, extFormat] = PsychKinect('GetImage', kinectPtr [, imtype=0][, returnTexturePtr=0]);";
 	synopsis[i++] =	"[imageOrPtr, width, height, extType, extFormat] = PsychKinect('GetDepthImage', kinectPtr [, format=0][, returnTexturePtr=0]);";
-	synopsis[i++] = NULL;  //this tells PsychKinectDisplaySynopsis where to stop
+	synopsis[i++] = NULL;  // This tells PsychKinectDisplaySynopsis where to stop
 	
 	if (i > MAX_SYNOPSIS_STRINGS) {
-		PrintfExit("%s: increase dimension of synopsis[] from %ld to at least %ld and recompile.", __FILE__, (long)MAX_SYNOPSIS_STRINGS,(long)i);
+		PrintfExit("%s: increase dimension of synopsis[] from %ld to at least %ld and recompile.", __FILE__, (long)MAX_SYNOPSIS_STRINGS, (long)i);
 	}
+	return synopsis;  // Return the synopsis array
 }
 
 PsychError PsychKinectDisplaySynopsis(void)

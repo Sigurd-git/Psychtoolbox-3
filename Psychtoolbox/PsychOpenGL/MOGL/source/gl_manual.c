@@ -799,7 +799,7 @@ void glu_tessbeginpolygon( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 
     // Setup all tesselator callbacks for this polygon:
     MOGLSETTESSCALLBACK(GLU_TESS_BEGIN);
-    MOGLSETTESSCALLBACK(GLU_TESS_EDGE_FLAG);
+    gluTessCallback((GLUtesselator*) mytess->glutesselator, GLU_TESS_EDGE_FLAG, (GLvoid (*)()) mogl_GLU_TESS_EDGE_FLAG_DATA);
     MOGLSETTESSCALLBACK(GLU_TESS_VERTEX);
     MOGLSETTESSCALLBACK(GLU_TESS_END);
     MOGLSETTESSCALLBACK(GLU_TESS_COMBINE);

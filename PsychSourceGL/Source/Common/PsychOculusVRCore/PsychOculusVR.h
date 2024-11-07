@@ -36,7 +36,7 @@ extern "C" {
 
 //function prototypes
 PsychError MODULEVersion(void);
-void InitializeSynopsis(void);
+const char** InitializeSynopsis(void);
 PsychError PsychOculusVRDisplaySynopsis(void);
 
 void PsychOculusVRInit(void);
