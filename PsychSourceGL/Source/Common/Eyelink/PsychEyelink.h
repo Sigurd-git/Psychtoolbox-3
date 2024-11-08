@@ -54,7 +54,7 @@ void PsychEyelink_dumpHookfunctions(void);
 int PsychEyelinkCallRuntime(int cmd, int x, int y, char* msg);
 
 // Defined in EyelinkSynopsis.c
-void InitializeSynopsis();
+const char** InitializeSynopsis();
 PsychError PsychDisplayEyelinkSynopsis(void);
 
 // Defined in MODULEVersion.c
